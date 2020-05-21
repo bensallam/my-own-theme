@@ -1,3 +1,9 @@
+// Check If There's Local Storage Color option
+let mainColors  = localStorage.getItem("color_option");
+console.log(mainColors)
+if (mainColors !== null) {
+    document.documentElement.style.setProperty('--main--color', localStorage.getItem("color_option"))
+}
 // Toggle Settings
 document.querySelector(".toggle-settings .fa-gear").onclick = function() {
     this.classList.toggle("fa-spin");
@@ -8,10 +14,16 @@ document.querySelector(".toggle-settings .fa-gear").onclick = function() {
 const colorsList = document.querySelectorAll(".colors-list li");
 colorsList.forEach(li => {
     li.addEventListener("click", (e) => {
-        console.log(e.target.dataset.color)
-
-        // Set ColoR On Root
-        document.documentElement.style.setProperty("--main--color","e.target.dataset.color")
+        // Set Color On Root
+        document.documentElement.style.setProperty("--main--color",e.target.dataset.color);
+        // Set Color On Local Storage 
+        localStorage.setItem("color_option",e.target.dataset.color)
+        // Remove Active Class From All childrens
+        e.target.parentElement.querySelectorAll(".active").forEach(element => {
+            element.classList.remove("active");
+        })
+        //Add Active Class on self
+        e.target.classList.add("active");
     })
 })
 

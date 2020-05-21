@@ -55,7 +55,7 @@ font-family: 'Open Sans', sans-serif;
     display: inline-block;
 }
 .settings-box .option-box .colors-list li:first-child{
-    background-color: var(--main--color);
+    background-color: #FF9800;
 }
 .settings-box .option-box .colors-list li:nth-child(2){
     background-color: #E91E63
